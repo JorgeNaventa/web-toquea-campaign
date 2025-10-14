@@ -1,36 +1,38 @@
-<div id="container" class="min-h-full max-w-[25rem] flex flex-col gap-8">
+<div id="container" class="flex flex-col gap-8">
   <div class="grid gap-4">
-    <h4>¡Hola! Empecemos con tu solicitud 💚</h4>
+    <h4 class="text-xl">¡Hola! Empecemos con tu solicitud 💚</h4>
     <p>Tu elección nos ayuda a mostrarte las opciones adecuadas</p>
   </div>
 
-  <form id="form" action="" class="grid gap-4">
+  <form id="form" class="grid gap-4">
     <div class="flex flex-col gap-2">
       <label>Desde dónde nos escribes</label>
       <select
+        id="input-company"
         name="company"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       >
-        <option value="">Elige una opción</option>
-        <option value="">Soy de Tiendas 3A</option>
-        <option value="">Soy administrativo de 3A</option>
-        <option value="">Soy ATIC</option>
+        <option value="" disabled selected>Elige una opción</option>
+        <option value="3AOperativo">Soy de Tiendas 3A</option>
+        <option value="3AAdmin">Soy administrativo de 3A</option>
+        <option value="Atic">Soy ATIC</option>
       </select>
     </div>
 
     <div class="flex flex-col gap-2">
       <label>¿Qué crédito quieres solicitar hoy?</label>
       <select
+        id="input-product"
         name="product"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       >
-        <option value="">Elige una opción</option>
-        <option>Préstamo convenio</option>
-        <option>Adelanto de sueldo</option>
+        <option value="" disabled selected>Elige una opción</option>
+        <option value="convenio">Préstamo convenio</option>
+        <option value="adelanto">Adelanto de sueldo</option>
       </select>
     </div>
 
-    <div class="flex flex-col gap-2">
+    <div id="input-amount" class="animation-leave grid gap-4">
       <label>Indícanos el importe que deseas pedir</label>
       <div class="flex items-center mb-4">
         <label>
@@ -46,15 +48,90 @@
       </div>
     </div>
 
-    <button
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      >Botón ir</button
-    >
+    <input
+      id="submitButton"
+      type="submit"
+      value="Ir"
+      disabled
+      class="text-white mr-0 bg-blue-700 disabled:bg-blue-300 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 disabled:bg-blue-300 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+    />
   </form>
 </div>
 
 <style></style>
 
-<script>
+<script lang="ts">
   const form = document.querySelector("#form");
+  const inputCompany = document.querySelector("#input-company");
+  const inputProduct = document.querySelector("#input-product");
+  const inputTypeProduct = document.querySelectorAll(
+    '[name="option-adelanto"]'
+  );
+
+  const inputAmount = document.querySelector("#input-amount");
+
+  const submitButton = document.querySelector("#submitButton");
+
+  const formData = {
+    company: "",
+    product: "",
+    amount: "",
+  };
+
+  inputCompany?.addEventListener("change", function (ev) {
+    formData.company = inputCompany.value;
+
+    checkForm();
+  });
+
+  inputProduct?.addEventListener("change", function (ev) {
+    formData.product = inputProduct.value;
+
+    if (formData.product === "convenio") {
+      console.log(inputAmount?.classList);
+
+      inputAmount?.classList.remove("animation-entry");
+      inputAmount?.classList.add("animation-leave");
+    } else {
+      inputAmount?.classList.add("animation-entry");
+      inputAmount?.classList.remove("animation-leave");
+    }
+
+    checkForm();
+  });
+
+  inputTypeProduct.forEach((radio) => {
+    radio.addEventListener("change", function (ev) {
+      if (radio.checked) {
+        formData.amount = radio.value;
+      }
+
+      checkForm();
+    });
+  });
+
+  function checkForm() {
+    if (!formData.product || !formData.company) {
+      submitButton?.setAttribute("disabled", true);
+      return;
+    }
+
+    if (formData.product === "adelanto" && formData.amount === "") {
+      submitButton?.setAttribute("disabled", true);
+      return;
+    }
+
+    submitButton?.removeAttribute("disabled");
+  }
+
+  form?.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+
+    const form2 = new FormData(form);
+    console.log("objet", Object.fromEntries(form2));
+    for (const k in form2.keys()) {
+      console.log(k);
+      console.log(form2.get(k));
+    }
+  });
 </script>

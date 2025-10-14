@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+.animation-leave {
+  display: none;
+}
+
+.animation-entry {
+  display: grid;
+  animation: entry 1s ease-in-out;
+}
+
+@keyframe entry {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.bg-surface {
+  background-color: #092130;
+}
+
+.title-banner {
+  color: #092130;
+  text-shadow: 0 0 4px #31be2b, 0 0 4px #31be2b, 0 0 4px #31be2b,
+    0 0 4px #31be2b, 0 0 4px #31be2b, 0 0 4px #31be2b, 0 0 4px #31be2b,
+    0 0 4px #31be2b, 0 0 4px #31be2b;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.text-banner {
+  color: #fff;
+  padding-left: 20%;
+}
+
+.item-home {
+  display: grid;
+  justify-content: center;
+}
+
+@media screen and (min-width: 20rem) {
+  .item-home {
+    grid-template-columns: 1fr 1fr;
+  }
+}

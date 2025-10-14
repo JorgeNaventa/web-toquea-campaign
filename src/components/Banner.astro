@@ -1,0 +1,33 @@
+---
+import banner1 from "../assets/banner_1.webp";
+import banner2 from "../assets/banner_2.webp";
+import banner3 from "../assets/banner_3.webp";
+---
+
+<div id="banner" class="relative min-h-full">
+  <div class="text-banner">
+    <h1 class="title-banner">Tu Navidad en movimiento con toquea</h1>
+    <p>
+      Desembolsa un <strong>crédito con Toquea</strong> y participas por una <strong
+        >moto eléctrica</strong
+      >
+    </p>
+    <small>Vigente 15 de Octubre al 31 de diciembre del 2025</small>
+  </div>
+
+  <img
+    src={banner1.src}
+    class="absolute w-[20%] -top-3 -left-4"
+    aria-hidden="true"
+  />
+  <img
+    src={banner2.src}
+    class="absolute w-[35%] -bottom-3 right-0"
+    aria-hidden="true"
+  />
+  <img
+    src={banner3.src}
+    class="absolute w-[65%] top-[50%] left-4 transform-(translate(-50%, -50%, 0))"
+    aria-hidden="true"
+  />
+</div>
