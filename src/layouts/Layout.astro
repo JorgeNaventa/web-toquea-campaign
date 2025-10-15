@@ -2,6 +2,14 @@
 import "../styles/global.css";
 import logo from "../assets/logo.svg";
 import Banner from "../components/Banner.astro";
+
+import block1Step1 from "../assets/block_1_step1.png";
+import block1Step2 from "../assets/block_1_step2.png";
+import block1Step3 from "../assets/block_1_step3.png";
+
+import block2Step1 from "../assets/block_2_step1.png";
+import block2Step2 from "../assets/block_2_step2.png";
+import block2Step3 from "../assets/block_2_step3.png";
 ---
 
 <!doctype html>
@@ -28,6 +36,82 @@ import Banner from "../components/Banner.astro";
           <div class="grid">
             <div class="bg-white p-5 rounded-sm m-auto">
               <slot />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bg-white py-16">
+        <div class="w-full max-w-[63rem] p-4 grid gap-8 m-auto">
+          <div class="text-center font-semibold text-3xl">
+            Beneficios exclusivos por campaña 🎉
+          </div>
+
+          <div class="auto-grid">
+            <div class="bg-white p-5 rounded-sm text-center card-item">
+              <img
+                src={block1Step1.src}
+                aria-hidden="true"
+                class="imgCard block"
+              />
+              <h5 class="font-semibold">Pago directo desde tu pantalla</h5>
+              <p>Sin trámites ni recordatorios.</p>
+            </div>
+            <div class="bg-white p-5 rounded-sm text-center card-item">
+              <img
+                src={block1Step2.src}
+                aria-hidden="true"
+                class="imgCard block"
+              />
+              <h5 class="font-semibold">Participaras automáticamente</h5>
+              <p>Todos los desembolsos entran al sorteo.</p>
+            </div>
+            <div class="bg-white p-5 rounded-sm text-center card-item">
+              <img
+                src={block1Step3.src}
+                aria-hidden="true"
+                class="imgCard block"
+              />
+              <h5 class="font-semibold">
+                Comisiones especiales solo por campaña
+              </h5>
+              <p>Desde el 15 de octubre hasta el 31 de diciembre 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full max-w-[63rem] p-4 grid gap-8 m-auto">
+          <div class="text-center font-semibold text-3xl">
+            ¿Cómo participas?
+          </div>
+
+          <div class="auto-grid">
+            <div class="bg-white p-5 rounded-sm text-center card-item">
+              <img
+                src={block2Step1.src}
+                aria-hidden="true"
+                class="imgCard block"
+              />
+              <p>Elige el préstamo que mejor va contigo en la web.</p>
+            </div>
+            <div class="bg-white p-5 rounded-sm text-center card-item">
+              <img
+                src={block2Step2.src}
+                aria-hidden="true"
+                class="imgCard block"
+              />
+              <p>Solicitalo y desembolsa al toquea.</p>
+            </div>
+            <div class="bg-white p-5 rounded-sm text-center card-item">
+              <img
+                src={block2Step3.src}
+                aria-hidden="true"
+                class="imgCard block"
+              />
+              <p>
+                ¡Listo! <strong
+                  >Ya participas por la moto eléctrica Toquea.</strong
+                >
+              </p>
             </div>
           </div>
         </div>
