@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: "20" # Or your desired Node.js version
           cache: "pnpm"
+      - uses: pnpm/action-setup@v4
       - name: Install dependencies
         run: pnpm install
       - name: Build Astro project
