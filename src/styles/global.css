@@ -84,10 +84,31 @@
 }
 
 .card-item:hover {
-  box-shadow: 0 2px 15px -15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 20px -25px rgba(0, 0, 0, 0.4);
   transform: translateY(-0.5rem);
 }
 
 .card-item:hover > .imgCard {
   transform: translateY(-0.5rem) scale(1.2);
+}
+
+.item-footer {
+  width: 6rem;
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.item-footer > img {
+  width: 5rem;
+  height: 8rem;
+  object-fit: contain;
+  margin-top: auto;
+}
+
+.hr-toquea {
+  color: #fff;
+  width: 90%;
+  margin: 3rem auto;
 }

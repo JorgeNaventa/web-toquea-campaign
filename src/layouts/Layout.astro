@@ -10,6 +10,12 @@ import block1Step3 from "../assets/block_1_step3.png";
 import block2Step1 from "../assets/block_2_step1.png";
 import block2Step2 from "../assets/block_2_step2.png";
 import block2Step3 from "../assets/block_2_step3.png";
+
+import grupoAje from "../assets/logo_aje.png";
+
+import iconoDigitalFooter from "../assets/icono_digital_footer.png";
+import iconoRapidoFooter from "../assets/icono_rapido_footer.png";
+import iconoSeguridadFooter from "../assets/icono_seguridad_footer.png";
 ---
 
 <!doctype html>
@@ -78,12 +84,16 @@ import block2Step3 from "../assets/block_2_step3.png";
             </div>
           </div>
         </div>
-
+      </section>
+      <section>
         <div class="w-full max-w-[63rem] p-4 grid gap-8 m-auto">
           <div class="text-center font-semibold text-3xl">
             ¿Cómo participas?
           </div>
-
+        </div>
+      </section>
+      <section>
+        <div class="w-full max-w-[63rem] p-4 grid gap-8 m-auto">
           <div class="auto-grid">
             <div class="bg-white p-5 rounded-sm text-center card-item">
               <img
@@ -116,7 +126,90 @@ import block2Step3 from "../assets/block_2_step3.png";
           </div>
         </div>
       </section>
+      <section>
+        <div class="w-full max-w-[63rem] m-auto p-4 text-center">
+          Revisa los términos y condiciones de la campaña, <a
+            href="#"
+            target="_blank">aquí</a
+          >
+        </div>
+      </section>
     </main>
+    <footer class="bg-blue-900 py-4">
+      <div class="w-full max-w-[63rem] p-4 m-auto">
+        <div class="text-white text-center">
+          Con el respaldo del Grupo <img
+            class="inline-block w-[2.5em]"
+            src={grupoAje.src}
+            alt="Aje"
+          />
+        </div>
+
+        <hr class="hr-toquea" />
+
+        <div class="flex justify-center py-4 text-white gap-16">
+          <div class="item-footer">
+            <img src={iconoDigitalFooter.src} />
+            <p>100% digital</p>
+          </div>
+          <div class="item-footer">
+            <img src={iconoRapidoFooter.src} />
+            <p>Más rápido</p>
+          </div>
+          <div class="item-footer">
+            <img src={iconoSeguridadFooter.src} />
+            <p>Más seguro</p>
+          </div>
+        </div>
+
+        <hr class="hr-toquea" />
+
+        <div class="flex justify-center py-4">
+          <a href="https://www.tiktok.com/@toquea_ya" style="padding: 12px">
+            <img
+              src="http://res.cloudinary.com/dktfgce0p/image/upload/v1760049449/email/logo_tiktok_footer.png.png"
+              alt="tiktok"
+              width="20px"
+              height="20px"
+              style="display: inline-block"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/toquea/"
+            style="padding: 12px"
+          >
+            <img
+              src="http://res.cloudinary.com/dktfgce0p/image/upload/v1760049518/email/logo_linkedin_footer.png.png"
+              alt="linkedin"
+              width="20px"
+              height="20px"
+              style="display: inline-block"
+            />
+          </a>
+          <a href="https://www.instagram.com/toqueape" style="padding: 12px">
+            <img
+              src="http://res.cloudinary.com/dktfgce0p/image/upload/v1760049627/email/logo_instagram_footer.png.png"
+              alt="instagram"
+              width="20px"
+              height="20px"
+              style="display: inline-block"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/people/Toquea-Pe/61578335820341/"
+            style="padding: 12px"
+          >
+            <img
+              src="http://res.cloudinary.com/dktfgce0p/image/upload/v1760049686/email/logo_facebook_footer.png.png"
+              alt="facebook"
+              width="20px"
+              height="20px"
+              style="display: inline-block"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 
