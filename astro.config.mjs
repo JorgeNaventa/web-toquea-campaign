@@ -9,5 +9,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: "static",
-  base: "https://jorgenaventa.github.io/web-toquea-campaign/",
+  base: "web-toquea-campaign/",
 });
