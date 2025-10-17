@@ -107,18 +107,75 @@
         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full p-2.5 hover:bg-gray-100"
       >
         <option value="" disabled selected>Seleccionar</option>
-        <option value="3AOperativo">Tiendas 3A</option>
+        <option value="3ATiendas">Tiendas 3A</option>
         <option value="3AAdmin">Administrativo de 3A</option>
         <option value="Atic">ATIC</option>
       </select>
     </div>
-    <a
+    <button
       id="submitButton"
       type="submit"
-      href="#"
-      data-disabled="true"
-      class="text-white text-center mr-0 bg-blue-900 disabled:bg-blue-300 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 disabled:bg-blue-300 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      >Solicitar</a
+      disabled
+      class="text-white text-center mr-0 bg-blue-900 disabled:bg-blue-300 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 disabled:bg-blue-300 focus:outline-none"
+      >Solicitar</button
     >
   </div>
 </div>
+
+<script>
+  const productRadio = document.querySelectorAll('[name="product"]');
+  const companySelector = document.querySelector("#input-company");
+  const button = document.querySelector("#submitButton");
+
+  const formData = {
+    company: null,
+    product: null,
+    link: null,
+  };
+
+  productRadio.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) {
+        formData.product = radio.value;
+      }
+      checkForm();
+    });
+  });
+
+  companySelector?.addEventListener("change", (ev) => {
+    formData.company = companySelector.value;
+    checkForm();
+  });
+
+  function checkForm() {
+    const linksAdelanto = {
+      Atic: "https://grupoaje-app.kuenta.co/o/IWIS8Q6NR",
+      "3AAdmin": "https://grupoaje-app.kuenta.co/o/4VQDUQEHR",
+      "3ATiendas": "https://grupoaje-app.kuenta.co/o/MJSS8QEHR",
+    };
+
+    const linksConvenio = {
+      Atic: "https://grupoaje-app.kuenta.co/o/WLTO8QENG",
+      "3AAdmin": "https://grupoaje-app.kuenta.co/o/BJUF8Q6HR",
+      "3ATiendas": "https://grupoaje-app.kuenta.co/o/C_4F8Q6NG",
+    };
+
+    const links = {
+      convenio: linksConvenio,
+      adelanto: linksAdelanto,
+    };
+
+    formData.link = links[formData.product]?.[formData.company];
+
+    if (formData.link) {
+      button?.removeAttribute("disabled");
+      return;
+    }
+    button?.setAttribute("disabled", "true");
+  }
+
+  button?.addEventListener("click", (ev) => {
+    if (!formData.link) return;
+    window.top.location.replace(formData.link);
+  });
+</script>
