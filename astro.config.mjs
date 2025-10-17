@@ -9,5 +9,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: "static",
-  base: "web-toquea-campaign/",
+  //base: "web-toquea-campaign/",
 });
