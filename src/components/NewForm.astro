@@ -121,6 +121,8 @@
 </div>
 
 <script>
+  import { track } from "astrojs-mixpanel/client";
+
   const productRadio = document.querySelectorAll('[name="product"]');
   const companySelector = document.querySelector("#input-company");
   const button = document.querySelector("#submitButton");
@@ -184,6 +186,16 @@
 
   button?.addEventListener("click", (ev) => {
     if (!formData.link) return;
+
+    try {
+      track("ClickForm", {
+        company: formData.company,
+        product: formData.product,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
     window.top.location.replace(formData.link);
   });
 </script>
